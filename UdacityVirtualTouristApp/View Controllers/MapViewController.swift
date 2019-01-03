@@ -13,26 +13,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var pinPlacement : MKPointAnnotation? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //Pin placement methods
+    //https://stackoverflow.com/questions/14580269/get-tapped-coordinates-with-iphone-mapkit
+    
+    @IBAction func addAPin(_ sender: UILongPressGestureRecognizer) {
+        
+        let newLocation = sender.location(in: mapView)
+        let coordinates = mapView.convert(newLocation, toCoordinateFrom: mapView)
+        
+        if sender.state == .began {
+            
+            pinPlacement = MKPointAnnotation()
+            pinPlacement!.coordinate = coordinates
+            
+            mapView.addAnnotation(pinPlacement!)
+            print("long prss, \(coordinates.latitude), \(coordinates.longitude)")
+        }
+       
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
