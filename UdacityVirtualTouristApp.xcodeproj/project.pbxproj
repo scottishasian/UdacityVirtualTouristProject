@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2415ED0421DD0C7A0048301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415ED0321DD0C7A0048301F /* Constants.swift */; };
+		2415ED0721DD1DF50048301F /* DataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415ED0621DD1DF50048301F /* DataClient.swift */; };
+		2415ED0B21DD341B0048301F /* PhotoDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415ED0A21DD341B0048301F /* PhotoDataParser.swift */; };
 		24234AAB21D7C4B7001CA0B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24234AAA21D7C4B7001CA0B0 /* AppDelegate.swift */; };
 		24234AAD21D7C4B7001CA0B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24234AAC21D7C4B7001CA0B0 /* ViewController.swift */; };
 		24234AB021D7C4B7001CA0B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24234AAE21D7C4B7001CA0B0 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2415ED0321DD0C7A0048301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2415ED0621DD1DF50048301F /* DataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClient.swift; sourceTree = "<group>"; };
+		2415ED0A21DD341B0048301F /* PhotoDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataParser.swift; sourceTree = "<group>"; };
 		24234AA721D7C4B7001CA0B0 /* UdacityVirtualTouristApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdacityVirtualTouristApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24234AAA21D7C4B7001CA0B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24234AAC21D7C4B7001CA0B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +41,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2415ED0221DD0C540048301F /* Contants */ = {
+			isa = PBXGroup;
+			children = (
+				2415ED0321DD0C7A0048301F /* Constants.swift */,
+			);
+			path = Contants;
+			sourceTree = "<group>";
+		};
+		2415ED0521DD1DE60048301F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2415ED0621DD1DF50048301F /* DataClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2415ED0821DD319B0048301F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2415ED0921DD34020048301F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2415ED0A21DD341B0048301F /* PhotoDataParser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		24234A9E21D7C4B6001CA0B0 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +91,10 @@
 		24234AA921D7C4B7001CA0B0 /* UdacityVirtualTouristApp */ = {
 			isa = PBXGroup;
 			children = (
+				2415ED0921DD34020048301F /* Models */,
+				2415ED0821DD319B0048301F /* View Controllers */,
+				2415ED0521DD1DE60048301F /* Networking */,
+				2415ED0221DD0C540048301F /* Contants */,
 				24234AAA21D7C4B7001CA0B0 /* AppDelegate.swift */,
 				24234AAC21D7C4B7001CA0B0 /* ViewController.swift */,
 				24234AAE21D7C4B7001CA0B0 /* Main.storyboard */,
@@ -135,8 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2415ED0721DD1DF50048301F /* DataClient.swift in Sources */,
 				24234AAD21D7C4B7001CA0B0 /* ViewController.swift in Sources */,
 				24234AAB21D7C4B7001CA0B0 /* AppDelegate.swift in Sources */,
+				2415ED0421DD0C7A0048301F /* Constants.swift in Sources */,
+				2415ED0B21DD341B0048301F /* PhotoDataParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
