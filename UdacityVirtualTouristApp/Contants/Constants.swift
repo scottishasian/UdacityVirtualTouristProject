@@ -10,7 +10,10 @@ struct Constants {
     
     // MARK: Flickr
     struct Flickr {
-        static let APIBaseURL = "https://api.flickr.com/services/rest/"
+        //APIBaseURL = "https://api.flickr.com/services/rest/"
+        static let APIScheme = "https"
+        static let APIHost = "api.flickr.com"
+        static let APIPath = "/services/rest"
     
         static let SearchBBoxHalfWidth = 1.0
         static let SearchBBoxHalfHeight = 1.0
@@ -30,10 +33,12 @@ struct Constants {
         static let Text = "text"
         static let BoundingBox = "bbox"
         static let Page = "page"
+        static let DisplayedPhotos = "per_page"
     }
     
     // MARK: Flickr Parameter Values
     struct FlickrParameterValues {
+        static let SearchMethod = "flickr.photos.search"
         static let APIKey = "5e08a79da0441ca3e2c6e8aaf095e45d"
         static let ResponseFormat = "json"
         static let DisableJSONCallback = "1" /* 1 means "yes" */
@@ -41,7 +46,7 @@ struct Constants {
         static let GalleryID = "5704-72157622566655097"
         static let MediumURL = "url_m"
         static let UseSafeSearch = "1"
-        static let PhotosPerPage = 30
+        static let DisplayedPhotos = 30
     }
     
     // MARK: Flickr Response Keys
