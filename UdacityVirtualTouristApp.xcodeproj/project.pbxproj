@@ -18,6 +18,7 @@
 		24234AB021D7C4B7001CA0B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24234AAE21D7C4B7001CA0B0 /* Main.storyboard */; };
 		24234AB221D7C4BB001CA0B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24234AB121D7C4BB001CA0B0 /* Assets.xcassets */; };
 		24234AB521D7C4BB001CA0B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24234AB321D7C4BB001CA0B0 /* LaunchScreen.storyboard */; };
+		24AB9EC321DE347F00F42570 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC221DE347F00F42570 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		24234AB121D7C4BB001CA0B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24234AB421D7C4BB001CA0B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24234AB621D7C4BB001CA0B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24AB9EC221DE347F00F42570 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				24234AB621D7C4BB001CA0B0 /* Info.plist */,
 				2416FF0121DE1B5D0043E5A7 /* Extensions.swift */,
 				2416FF0521DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodeld */,
+				24AB9EC221DE347F00F42570 /* DataManager.swift */,
 			);
 			path = UdacityVirtualTouristApp;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				2415ED0421DD0C7A0048301F /* Constants.swift in Sources */,
 				2415ED0B21DD341B0048301F /* PhotoDataParser.swift in Sources */,
 				2416FF0221DE1B5D0043E5A7 /* Extensions.swift in Sources */,
+				24AB9EC321DE347F00F42570 /* DataManager.swift in Sources */,
 				2416FF0721DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

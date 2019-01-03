@@ -14,9 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    //Load persited data as early as possible. Needs to be the same as the data model, not the app.
+    let dataController = DataManager(modelName: "Virtual_Tourist_Model")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        dataController.load()
+        //To get to the inital view.
+        let navigationController = window?.rootViewController as! UINavigationController
+        let mapViewCOntroller = navigationController.topViewController as! MapViewController
+        //This will inject the data controller dependency into the notebooks list VM. Now it can load safe data into the app.
+        mapViewCOntroller.dataController = dataController
         return true
     }
 
@@ -28,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        saveViewContext()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -40,6 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        saveViewContext()
+    }
+    
+    //Helper
+    func saveViewContext() {
+        //For saving before the app it terminated or backgrounded.
+        try? dataController.viewContext.save()
     }
 
 

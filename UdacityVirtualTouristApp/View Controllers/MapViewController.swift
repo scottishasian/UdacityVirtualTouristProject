@@ -13,6 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var dataController: DataController!
+    
     var pinPlacement : MKPointAnnotation? = nil
     
     override func viewDidLoad() {
@@ -35,7 +37,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             pinPlacement!.coordinate = coordinates
             
             mapView.addAnnotation(pinPlacement!)
-            print("long prss, \(coordinates.latitude), \(coordinates.longitude)")
+            print("long press test, \(coordinates.latitude), \(coordinates.longitude)")
         }
        
     }
