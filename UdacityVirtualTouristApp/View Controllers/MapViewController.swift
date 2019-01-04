@@ -21,6 +21,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         
+        if let savedPins = loadSavedPins() {
+            displaySavedPins(savedPins)
+        }
     }
     
     //Pin placement methods
@@ -46,6 +49,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
         } else if sender.state == .ended {
             _ = Pin(context: DataManager.sharedInstance().pinContext)
+            
+            _ = Pin(latitude: String(pinPlacement!.coordinate.latitude),
+                    longitude: String(pinPlacement!.coordinate.longitude),
+                    context: DataManager.sharedInstance().pinContext)
+            
             savePin()
         }
     }
