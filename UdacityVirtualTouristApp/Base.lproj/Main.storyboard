@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="91n-hz-PnP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Udacity Virtual Tourist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="UdacityVirtualTouristApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mu9-ge-4v7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Udacity Virtual Tourist" id="Knb-8W-M0X"/>
-                                </items>
-                            </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SYE-Vx-Vnj">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <gestureRecognizers/>
@@ -34,16 +28,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="top" secondItem="Mu9-ge-4v7" secondAttribute="bottom" id="BBS-FX-cVn"/>
-                            <constraint firstItem="Mu9-ge-4v7" firstAttribute="trailing" secondItem="SYE-Vx-Vnj" secondAttribute="trailing" id="Mj3-WN-XX3"/>
-                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UvZ-LV-w0O"/>
-                            <constraint firstItem="Mu9-ge-4v7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VSp-Vu-oBj"/>
-                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YXQ-jV-WSY"/>
-                            <constraint firstItem="Mu9-ge-4v7" firstAttribute="leading" secondItem="SYE-Vx-Vnj" secondAttribute="leading" id="dBm-ZU-RJd"/>
-                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qO5-Fm-rPU"/>
+                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="87a-O9-m3w"/>
+                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="G5J-R9-wdx"/>
+                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jb4-gy-gJa"/>
+                            <constraint firstItem="SYE-Vx-Vnj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TgH-H0-4Bu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Udacity Virtual Tourist" id="prI-vV-J9N"/>
                     <connections>
                         <outlet property="mapView" destination="SYE-Vx-Vnj" id="v85-wa-Crp"/>
                         <segue destination="Nbz-hP-Hc6" kind="presentation" identifier="LocationPhotos" id="SM4-6T-wTw"/>
@@ -56,12 +48,12 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="624.79999999999995" y="318.89055472263868"/>
+            <point key="canvasLocation" x="1564" y="318.89055472263868"/>
         </scene>
-        <!--View Controller-->
+        <!--Location Photos View Controller-->
         <scene sceneID="tQf-ne-c3A">
             <objects>
-                <viewController id="Nbz-hP-Hc6" sceneMemberID="viewController">
+                <viewController id="Nbz-hP-Hc6" customClass="LocationPhotosViewController" customModule="UdacityVirtualTouristApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NNx-CZ-fDp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,7 +61,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DyQ-QJ-PQj">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="4sn-WV-BDd"/>
+                                    <navigationItem title="Title" id="4sn-WV-BDd">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="LC6-du-NQv">
+                                            <connections>
+                                                <action selector="backButton:" destination="Nbz-hP-Hc6" id="ar3-bg-WbY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VMV-Sd-Ap2">
@@ -88,7 +86,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ytm-hH-Rwd">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ytm-hH-Rwd" customClass="PhotoCellsViewController" customModule="UdacityVirtualTouristApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -114,10 +112,32 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1wY-jf-RMq"/>
                     </view>
+                    <connections>
+                        <outlet property="LocationCollectionView" destination="3c4-Te-Vyr" id="blI-oV-Ak8"/>
+                        <outlet property="mapView" destination="VMV-Sd-Ap2" id="afz-wP-grd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLW-KH-lph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="318.89055472263868"/>
+            <point key="canvasLocation" x="2487.1999999999998" y="318.89055472263868"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iZP-d7-aJ6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="91n-hz-PnP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="73m-S6-J5a">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CcN-cC-fpF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s3j-5G-BVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="624.79999999999995" y="318.89055472263868"/>
         </scene>
     </scenes>
 </document>

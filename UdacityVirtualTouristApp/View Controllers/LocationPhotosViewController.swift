@@ -12,6 +12,8 @@ import CoreData
 
 class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
     
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var LocationCollectionView: UICollectionView!
     var tappedPin: Pin?
 
     override func viewDidLoad() {
@@ -19,6 +21,12 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
 
         // Do any additional setup after loading the view.
     }
+    
+    //As the view is a modal, dismiss not back button.
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
-
+    
 }

@@ -20,6 +20,7 @@
 		24AB9EC321DE347F00F42570 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC221DE347F00F42570 /* DataManager.swift */; };
 		24AB9EC521DF815100F42570 /* LocationPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC421DF815100F42570 /* LocationPhotosViewController.swift */; };
 		24AB9EC821DF8EE800F42570 /* MapView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */; };
+		24AB9ECA21DFDAB200F42570 /* PhotoCellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		24AB9EC221DE347F00F42570 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		24AB9EC421DF815100F42570 /* LocationPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosViewController.swift; sourceTree = "<group>"; };
 		24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView_Extensions.swift; sourceTree = "<group>"; };
+		24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				24AB9EC621DF8ECB00F42570 /* View Extensions */,
 				24AB9EC421DF815100F42570 /* LocationPhotosViewController.swift */,
 				2416FEFF21DE19C50043E5A7 /* MapViewController.swift */,
+				24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24AB9ECA21DFDAB200F42570 /* PhotoCellsViewController.swift in Sources */,
 				2415ED0721DD1DF50048301F /* DataClient.swift in Sources */,
 				24AB9EC821DF8EE800F42570 /* MapView_Extensions.swift in Sources */,
 				2416FF0021DE19C50043E5A7 /* MapViewController.swift in Sources */,

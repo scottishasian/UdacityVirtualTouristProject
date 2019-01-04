@@ -36,6 +36,7 @@ extension MapViewController {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
+            //If segue is placed here, then the user has to tap on the Callout Accessory.
             performSegue(withIdentifier: "LocationPhotos", sender: self)
         } else {
             self.showErrorInfo(withMessage: "No links available with location.")
@@ -43,6 +44,7 @@ extension MapViewController {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //If segue is placed here, then the user can tap on the pin to proceed.
         print("Pin tapped")
     }
 }
