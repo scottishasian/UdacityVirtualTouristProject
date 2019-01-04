@@ -15,16 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     //Load persited data as early as possible. Needs to be the same as the data model, not the app.
-    let dataController = DataManager(modelName: "Virtual_Tourist_Model")
+    let dataManager = DataManager(modelName: "Virtual_Tourist_Model")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        dataController.load()
+        //dataManager.load()
         //To get to the inital view.
-        let navigationController = window?.rootViewController as! UINavigationController
-        let mapViewCOntroller = navigationController.topViewController as! MapViewController
+        let mapViewCOntroller = window?.rootViewController as! MapViewController
         //This will inject the data controller dependency into the notebooks list VM. Now it can load safe data into the app.
-        mapViewCOntroller.dataController = dataController
+        mapViewCOntroller.dataManager = dataManager
         return true
     }
 
@@ -55,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Helper
     func saveViewContext() {
         //For saving before the app it terminated or backgrounded.
-        try? dataController.viewContext.save()
+        try? dataManager.pinContext.save()
     }
 
 

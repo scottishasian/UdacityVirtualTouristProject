@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-extension ViewController {
+extension UIViewController {
     
     func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
         DispatchQueue.main.async {
@@ -25,6 +25,14 @@ extension ViewController {
                 action?()
             }))
             self.present(ac, animated: true)
+        }
+    }
+    
+    func savePin() {
+        do {
+            try DataManager.sharedInstance().savePinContext()
+        } catch {
+            showErrorInfo(withTitle: "Saving Error", withMessage: "\(error)")
         }
     }
 }

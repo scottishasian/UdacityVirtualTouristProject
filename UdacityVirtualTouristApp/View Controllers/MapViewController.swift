@@ -13,7 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var dataController: DataController!
+    var dataManager: DataManager!
     
     var pinPlacement : MKPointAnnotation? = nil
     
@@ -38,6 +38,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             mapView.addAnnotation(pinPlacement!)
             print("long press test, \(coordinates.latitude), \(coordinates.longitude)")
+            
+        } else if sender.state == .changed {
+            pinPlacement?.coordinate = coordinates
+            
+        } else if sender.state == .ended {
+            _ = Pin(context: DataManager.sharedInstance().pinContext)
+            savePin()
         }
        
     }
