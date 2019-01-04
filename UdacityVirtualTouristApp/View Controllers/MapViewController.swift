@@ -61,4 +61,38 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             segueController.tappedPin = selectedPin
         }
     }
+    
+    //https://stackoverflow.com/questions/2026649/nspredicate-dont-work-with-double-values-f
+    func loadPinLocation(latitude: String, longitude: String) -> Pin? {
+        let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", latitude, longitude)
+        var loadedPin: Pin?
+        
+        do {
+            try loadedPin = dataManager.fetchRequestForPin(predicate, entityName: Pin.pinName)
+        } catch {
+            fatalError("\(error)")
+        }
+        return loadedPin
+    }
+    
+    func loadSavedPins() -> [Pin]? {
+        var savedPins: [Pin]?
+        do {
+            try savedPins = DataManager.sharedInstance().fetchRequestForSavedPins(entityName: Pin.pinName)
+        } catch {
+            fatalError("\(error)")
+        }
+        return savedPins
+    }
+    
+    func displaySavedPins(_ savedPins: [Pin]) {
+        for pin in savedPins where pin.latitude != nil && pin.longitude != nil {
+            let mapAnnotation = MKPointAnnotation()
+            let latitude = Double(pin.latitude!)!
+            let longitude = Double(pin.longitude!)!
+            mapAnnotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+            mapView.addAnnotation(mapAnnotation)
+        }
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
 }

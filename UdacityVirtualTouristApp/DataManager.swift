@@ -19,6 +19,7 @@ class DataManager {
     let backgroundContext: NSManagedObjectContext!
     let pinContext: NSManagedObjectContext
     
+    //Needed as extensions can't access datamanager properties.
     class func sharedInstance() -> DataManager {
         struct SingletonClass {
             static var sharedInstance = DataManager(modelName: "Virtual_Tourist_Model")
@@ -129,7 +130,7 @@ extension DataManager {
     }
     
     //For an array of Pin entities
-    func fetchRequestForMultiplePins(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Pin]?  {
+    func fetchRequestForSavedPins(_ predicate: NSPredicate? = nil, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Pin]?  {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fetchRequest.predicate = predicate
         if let sorted = sorting {
@@ -141,7 +142,7 @@ extension DataManager {
         return pinArray
     }
     
-    func fetchRequestForLocationPhotos(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Photo]?  {
+    func fetchRequestForLocationPhotos(_ predicate: NSPredicate? = nil, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Photo]?  {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fetchRequest.predicate = predicate
         if let sorted = sorting {
