@@ -113,12 +113,44 @@ extension DataManager {
 
     }
     
-    func fetchRequestForPin() {
+    // Fetch requests
+    
+    func fetchRequestForPin(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Pin? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fetchRequest.predicate = predicate
+        if let sorted = sorting {
+            fetchRequest.sortDescriptors = [sorted]
+        }
+        guard let pin = (try pinContext.fetch(fetchRequest) as! [Pin]).first else {
+            return nil
+        }
+        return pin
         
     }
     
-    func fetchRequestForMultiplePins() {
-        
+    //For an array of Pin entities
+    func fetchRequestForMultiplePins(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Pin]?  {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fetchRequest.predicate = predicate
+        if let sorted = sorting {
+            fetchRequest.sortDescriptors = [sorted]
+        }
+        guard let pinArray = try pinContext.fetch(fetchRequest) as? [Pin] else {
+            return nil
+        }
+        return pinArray
+    }
+    
+    func fetchRequestForLocationPhotos(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Photo]?  {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fetchRequest.predicate = predicate
+        if let sorted = sorting {
+            fetchRequest.sortDescriptors = [sorted]
+        }
+        guard let photoArray = try pinContext.fetch(fetchRequest) as? [Photo] else {
+            return nil
+        }
+        return photoArray
     }
 
     //autosave feature

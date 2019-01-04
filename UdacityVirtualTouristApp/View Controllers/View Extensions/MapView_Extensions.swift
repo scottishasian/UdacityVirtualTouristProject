@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import MapKit
 
+//http://swiftdeveloperblog.com/code-examples/drop-a-mkpointannotation-pin-on-a-mapview-at-users-current-location/
+//https://www.raywenderlich.com/548-mapkit-tutorial-getting-started
+//https://stackoverflow.com/questions/37247220/how-can-i-perform-an-action-when-i-tap-on-a-pin-from-mapkit-ios9-swift-2
+
 extension MapViewController {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -32,7 +36,9 @@ extension MapViewController {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            self.showErrorInfo(withMessage: "No link defined.")
+            performSegue(withIdentifier: "LocationPhotos", sender: self)
+        } else {
+            self.showErrorInfo(withMessage: "No links available with location.")
         }
     }
     
