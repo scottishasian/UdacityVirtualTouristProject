@@ -46,6 +46,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="SYE-Vx-Vnj" id="v85-wa-Crp"/>
+                        <segue destination="Nbz-hP-Hc6" kind="presentation" identifier="LocationPhotos" id="SM4-6T-wTw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

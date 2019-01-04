@@ -14,11 +14,12 @@
 		2416FF0221DE1B5D0043E5A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416FF0121DE1B5D0043E5A7 /* Extensions.swift */; };
 		2416FF0721DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2416FF0521DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodeld */; };
 		24234AAB21D7C4B7001CA0B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24234AAA21D7C4B7001CA0B0 /* AppDelegate.swift */; };
-		24234AAD21D7C4B7001CA0B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24234AAC21D7C4B7001CA0B0 /* ViewController.swift */; };
 		24234AB021D7C4B7001CA0B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24234AAE21D7C4B7001CA0B0 /* Main.storyboard */; };
 		24234AB221D7C4BB001CA0B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24234AB121D7C4BB001CA0B0 /* Assets.xcassets */; };
 		24234AB521D7C4BB001CA0B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24234AB321D7C4BB001CA0B0 /* LaunchScreen.storyboard */; };
 		24AB9EC321DE347F00F42570 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC221DE347F00F42570 /* DataManager.swift */; };
+		24AB9EC521DF815100F42570 /* LocationPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC421DF815100F42570 /* LocationPhotosViewController.swift */; };
+		24AB9EC821DF8EE800F42570 /* MapView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +31,13 @@
 		2416FF0621DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Virtual_Tourist_Model.xcdatamodel; sourceTree = "<group>"; };
 		24234AA721D7C4B7001CA0B0 /* UdacityVirtualTouristApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdacityVirtualTouristApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24234AAA21D7C4B7001CA0B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		24234AAC21D7C4B7001CA0B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24234AAF21D7C4B7001CA0B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24234AB121D7C4BB001CA0B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24234AB421D7C4BB001CA0B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24234AB621D7C4BB001CA0B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24AB9EC221DE347F00F42570 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		24AB9EC421DF815100F42570 /* LocationPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosViewController.swift; sourceTree = "<group>"; };
+		24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView_Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,9 @@
 		2415ED0821DD319B0048301F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				24AB9EC621DF8ECB00F42570 /* View Extensions */,
+				24AB9EC421DF815100F42570 /* LocationPhotosViewController.swift */,
 				2416FEFF21DE19C50043E5A7 /* MapViewController.swift */,
-				24234AAC21D7C4B7001CA0B0 /* ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -115,6 +118,14 @@
 				24AB9EC221DE347F00F42570 /* DataManager.swift */,
 			);
 			path = UdacityVirtualTouristApp;
+			sourceTree = "<group>";
+		};
+		24AB9EC621DF8ECB00F42570 /* View Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */,
+			);
+			path = "View Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,13 +200,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2415ED0721DD1DF50048301F /* DataClient.swift in Sources */,
+				24AB9EC821DF8EE800F42570 /* MapView_Extensions.swift in Sources */,
 				2416FF0021DE19C50043E5A7 /* MapViewController.swift in Sources */,
-				24234AAD21D7C4B7001CA0B0 /* ViewController.swift in Sources */,
 				24234AAB21D7C4B7001CA0B0 /* AppDelegate.swift in Sources */,
 				2415ED0421DD0C7A0048301F /* Constants.swift in Sources */,
 				2415ED0B21DD341B0048301F /* PhotoDataParser.swift in Sources */,
 				2416FF0221DE1B5D0043E5A7 /* Extensions.swift in Sources */,
 				24AB9EC321DE347F00F42570 /* DataManager.swift in Sources */,
+				24AB9EC521DF815100F42570 /* LocationPhotosViewController.swift in Sources */,
 				2416FF0721DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

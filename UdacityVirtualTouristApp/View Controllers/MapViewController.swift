@@ -20,11 +20,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        // Do any additional setup after loading the view.
+        
     }
     
     //Pin placement methods
     //https://stackoverflow.com/questions/14580269/get-tapped-coordinates-with-iphone-mapkit
+    //https://www.youtube.com/watch?v=pt_hbo85OkI
     
     @IBAction func addAPin(_ sender: UILongPressGestureRecognizer) {
         
@@ -35,6 +36,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             pinPlacement = MKPointAnnotation()
             pinPlacement!.coordinate = coordinates
+            pinPlacement?.title = ("\(coordinates.latitude), \(coordinates.longitude)")
             
             mapView.addAnnotation(pinPlacement!)
             print("long press test, \(coordinates.latitude), \(coordinates.longitude)")
@@ -46,8 +48,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             _ = Pin(context: DataManager.sharedInstance().pinContext)
             savePin()
         }
-       
     }
     
-
+    //Segue performed when pin is tapped.
+    //https://stackoverflow.com/questions/33053832/swift-perform-segue-from-map-annotation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LocationPhotos" {
+            guard let selectedPin = sender as? Pin else {
+                return
+            }
+            let segueController = segue.destination as! LocationPhotosViewController
+            segueController.tappedPin = selectedPin
+        }
+    }
 }

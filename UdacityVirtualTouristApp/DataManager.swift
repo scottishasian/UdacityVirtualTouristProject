@@ -10,13 +10,11 @@ import CoreData
 
 class DataManager {
     
-    //https://cocoacasts.com/setting-up-the-core-data-stack-from-scratch
-    
     private let modelName: String
     let modelURL : URL
     var databaseURL : URL
     let managedObjectModel : NSManagedObjectModel
-    let coordinator: NSPersistentStoreCoordinator
+    let storeCoordinator: NSPersistentStoreCoordinator
     let persistedCOntext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext!
     let pinContext: NSManagedObjectContext
@@ -27,6 +25,8 @@ class DataManager {
         }
         return SingletonClass.sharedInstance
     }
+    
+    //https://cocoacasts.com/setting-up-the-core-data-stack-from-scratch
     
     init(modelName: String) {
         self.modelName = modelName
@@ -42,10 +42,10 @@ class DataManager {
         }
         self.managedObjectModel = managedObjectModel
         
-        coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         
         persistedCOntext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        persistedCOntext.persistentStoreCoordinator = coordinator
+        persistedCOntext.persistentStoreCoordinator = storeCoordinator
         
         pinContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         pinContext.parent = persistedCOntext
@@ -68,7 +68,7 @@ class DataManager {
         let migration = [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true]
         
         do {
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: databaseURL, options: migration as [NSObject:AnyObject]?)
+            try storeCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: databaseURL, options: migration as [NSObject:AnyObject]?)
         } catch {
             fatalError("Persistant store not found.")
         }
@@ -101,19 +101,38 @@ extension DataManager {
             }
         }
     }
+    
+
+    //https://github.com/jessesquires/JSQCoreDataKit/blob/develop/Source/CoreDataStack.swift#L166-L167
+    //https://developer.apple.com/documentation/coredata/nspersistentstorecoordinator/1468888-destroypersistentstore
+    func clearData() throws {
+            //Deletes the target persistant store.
+            try storeCoordinator.destroyPersistentStore(at: modelURL, ofType: NSSQLiteStoreType, options: nil)
+            //Returns new store.
+            try storeCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: databaseURL, options: nil)
+
+    }
+    
+    func fetchRequestForPin() {
+        
+    }
+    
+    func fetchRequestForMultiplePins() {
+        
+    }
 
     //autosave feature
-//    func autoSaveViewContext(interval: TimeInterval = 30) {
-//        print("Auto-saving")
-//        guard interval > 0 else {
-//            print("Can not set negative autosave intervals")
-//            return
-//        }
-//        if viewContext.hasChanges {
-//            try? viewContext.save()
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-//            self.autoSaveViewContext(interval: interval)
-//        }
-//    }
+    func autoSaveViewContext(interval: TimeInterval = 30) {
+        print("Auto-saving")
+        guard interval > 0 else {
+            print("Can not set negative autosave intervals")
+            return
+        }
+        if pinContext.hasChanges {
+            try? savePinContext()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+            self.autoSaveViewContext(interval: interval)
+        }
+    }
 }
