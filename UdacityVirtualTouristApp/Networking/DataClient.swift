@@ -11,6 +11,7 @@ import UIKit
 class DataClient {
     
     var session = URLSession.shared
+    var dataTasks: [String: URLSessionDataTask] = [:]
     
     class func sharedInstance() -> DataClient {
         struct SingletonClass {
@@ -67,6 +68,28 @@ class DataClient {
         }
     }
     
+    func downloadSelectedImage(imageUrl: String, result: @escaping (_ result: Data?, _ error: NSError?) -> Void) {
+        guard let url = URL(string: imageUrl) else {
+            return
+        }
+        let dataTask = taskForGetMethod(nil, url, parameters: [:]) { (data, error) in
+            result(data, error)
+            self.dataTasks.removeValue(forKey: imageUrl)
+        }
+        
+        if dataTasks[imageUrl] == nil {
+            dataTasks[imageUrl] = dataTask
+        }
+    }
+    
+    func cancelDownloadInProgress(_ imageURL: String) {
+        dataTasks[imageURL]?.cancel()
+        
+        if dataTasks.removeValue(forKey: imageURL) != nil {
+            print("Data tast was cancelled: \(imageURL)")
+        }
+    }
+    
     //Now needs to take in lat long parameters as no search fields.
     private func bboxString(latitude: Double, longitude: Double) -> String {
         // ensure bbox is bounded by minimum and maximums
@@ -95,7 +118,7 @@ class DataClient {
     }
     
     //Used instead of displayImageFromFlickrBySearch method.
-    func taskForGetMethod(_ method: String? = nil, parameters: [String:String], completionHandlerForGET: @escaping (_ result: Data?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGetMethod(_ method: String? = nil, _ extraURL: URL? = nil,  parameters: [String:String], completionHandlerForGET: @escaping (_ result: Data?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         let request = URLRequest(url: flickrURLFromParameters(parameters, withPathExtension: method))
         

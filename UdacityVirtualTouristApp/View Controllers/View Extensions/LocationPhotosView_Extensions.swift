@@ -32,6 +32,91 @@ extension LocationPhotosViewController {
     }
 }
 
+extension LocationPhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let sectionInformation = self.fetchResultsController.sections?[section] {
+            return sectionInformation.numberOfObjects
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCellsViewController.cellIdentifier, for: indexPath) as! PhotoCellsViewController
+        photoCell.cellImage.image = nil
+        
+        return photoCell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return fetchResultsController.sections?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoToDelete = fetchResultsController.object(at: indexPath)
+        DataManager.sharedInstance().pinContext.delete(photoToDelete)
+        saveData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let photo = fetchResultsController.object(at: indexPath)
+        let photoCell = cell as! PhotoCellsViewController
+        photoCell.imageURL = photo.imageURL!
+        configureImageLoading(using: photoCell, photo: photo, collectionView: collectionView, index: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying: UICollectionViewCell, forItemAt: IndexPath) {
+        
+        if collectionView.cellForItem(at: forItemAt) == nil {
+            return
+        }
+        
+        let photo = fetchResultsController.object(at: forItemAt)
+        if let imageUrl = photo.imageURL {
+            DataClient.sharedInstance().cancelDownloadInProgress(imageUrl)
+        }
+    }
+
+    private func configureImageLoading(using cell: PhotoCellsViewController, photo: Photo, collectionView: UICollectionView, index: IndexPath) {
+        if let imageData = photo.image {
+            cell.cellImage.image = UIImage(data: Data(referencing: imageData as NSData))
+            cell.loadingSpinner.stopAnimating()
+        } else {
+            if let imageUrl = photo.imageURL {
+                DataClient.sharedInstance().downloadSelectedImage(imageUrl: imageUrl) { (data, error) in
+                    if let _ = error {
+                        self.performUIUpdatesOnMain {
+                            cell.loadingSpinner.stopAnimating()
+                            self.errorForImageUrl(imageUrl)
+                        }
+                        return
+                    } else if let data = data {
+                        self.performUIUpdatesOnMain {
+                            
+                            if let currentCell = collectionView.cellForItem(at: index) as? PhotoCellsViewController {
+                                if currentCell.imageURL == imageUrl {
+                                    currentCell.cellImage.image = UIImage(data: data)
+                                    cell.loadingSpinner.stopAnimating()
+                                }
+                            }
+                            photo.image = NSData(data: data) as Data
+                            DispatchQueue.global(qos: .background).async {
+                                self.saveData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func errorForImageUrl(_ imageUrl: String) {
+        self.showErrorInfo(withTitle: "Error", withMessage: "Error while fetching image for URL: \(imageUrl)")
+    }
+    
+}
+
 extension LocationPhotosViewController: NSFetchedResultsControllerDelegate {
     
     //Called when the fetchedResultContoller has been notified there are changes. Should updated affected rows.

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -96,7 +97,29 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OtV-wl-Mrf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
+                                                </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JfQ-UO-Kmh">
+                                                    <rect key="frame" x="48" y="48" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="JfQ-UO-Kmh" secondAttribute="bottom" constant="40" id="3Fy-Tg-qgj"/>
+                                            <constraint firstItem="OtV-wl-Mrf" firstAttribute="leading" secondItem="ytm-hH-Rwd" secondAttribute="leading" id="BQf-R6-MvI"/>
+                                            <constraint firstItem="OtV-wl-Mrf" firstAttribute="top" secondItem="ytm-hH-Rwd" secondAttribute="top" id="BkG-HZ-77o"/>
+                                            <constraint firstAttribute="bottom" secondItem="OtV-wl-Mrf" secondAttribute="bottom" id="KGe-TW-IuQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="OtV-wl-Mrf" secondAttribute="trailing" id="Ydg-58-Owt"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="JfQ-UO-Kmh" secondAttribute="trailing" constant="40" id="dA8-aA-fyj"/>
+                                            <constraint firstItem="JfQ-UO-Kmh" firstAttribute="leading" secondItem="ytm-hH-Rwd" secondAttribute="leadingMargin" constant="40" id="hKd-8M-sK2"/>
+                                            <constraint firstItem="JfQ-UO-Kmh" firstAttribute="top" secondItem="ytm-hH-Rwd" secondAttribute="topMargin" constant="40" id="ybJ-0h-yll"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="cellImage" destination="OtV-wl-Mrf" id="MaF-x6-vha"/>
+                                            <outlet property="loadingSpinner" destination="JfQ-UO-Kmh" id="2VZ-Tz-EhH"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
