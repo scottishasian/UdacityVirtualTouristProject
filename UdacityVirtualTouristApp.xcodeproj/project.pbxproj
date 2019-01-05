@@ -23,6 +23,7 @@
 		24AB9ECA21DFDAB200F42570 /* PhotoCellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */; };
 		24AB9ECC21DFDF5100F42570 /* Pin+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9ECB21DFDF5100F42570 /* Pin+Extension.swift */; };
 		24AB9ECE21E0D74500F42570 /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9ECD21E0D74500F42570 /* Photo+Extension.swift */; };
+		24AB9ED021E13BBA00F42570 /* LocationPhotosView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9ECF21E13BBA00F42570 /* LocationPhotosView_Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellsViewController.swift; sourceTree = "<group>"; };
 		24AB9ECB21DFDF5100F42570 /* Pin+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pin+Extension.swift"; sourceTree = "<group>"; };
 		24AB9ECD21E0D74500F42570 /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
+		24AB9ECF21E13BBA00F42570 /* LocationPhotosView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosView_Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */,
+				24AB9ECF21E13BBA00F42570 /* LocationPhotosView_Extensions.swift */,
 			);
 			path = "View Extensions";
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				2415ED0721DD1DF50048301F /* DataClient.swift in Sources */,
 				24AB9EC821DF8EE800F42570 /* MapView_Extensions.swift in Sources */,
 				2416FF0021DE19C50043E5A7 /* MapViewController.swift in Sources */,
+				24AB9ED021E13BBA00F42570 /* LocationPhotosView_Extensions.swift in Sources */,
 				24234AAB21D7C4B7001CA0B0 /* AppDelegate.swift in Sources */,
 				24AB9ECC21DFDF5100F42570 /* Pin+Extension.swift in Sources */,
 				2415ED0421DD0C7A0048301F /* Constants.swift in Sources */,

@@ -17,6 +17,12 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var collectionViewFlow: UICollectionViewFlowLayout!
     
+    var selectedIndexes = [IndexPath]()
+    var insertedIndexPaths: [IndexPath]!
+    var deletedIndexPaths: [IndexPath]!
+    var updatedIndexPaths: [IndexPath]!
+    var totalPages: Int? = nil
+    
     var tappedPin: Pin?
     var fetchResultsController: NSFetchedResultsController<Photo>!
     var loadedPages: Int? =  nil
@@ -29,10 +35,12 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
         guard let selectedPin = tappedPin else {
             return
         }
+        showSelectedPinLocation(selectedPin)
+        callFetchedResults(selectedPin)
         
         //show photos of the location.
         if let locationPhotos = selectedPin.photos, locationPhotos.count == 0 {
-            
+            fetchPhotosFromFlickr(selectedPin)
         }
         
     }
@@ -102,6 +110,53 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    func loadFetchedPhotos(using selectedPin: Pin) -> [Photo]? {
+        let predicate = NSPredicate(format: "pin == %@", argumentArray: [selectedPin])
+        var photosArray: [Photo]?
+        
+        do {
+            try photosArray = DataManager.sharedInstance().fetchRequestForLocationPhotos(predicate,entityName: Photo.photoName)
+        } catch {
+            fatalError("\(error)")
+            showErrorInfo(withTitle: "Error", withMessage: "Error loading saved photos \(error)")
+        }
+        return photosArray
+    }
+    
+    func showSelectedPinLocation(_ selectedPin: Pin) {
+        
+        let latitude = Double(selectedPin.latitude!)!
+        let longitude = Double(selectedPin.longitude!)!
+        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        let mapAnnotiation = MKPointAnnotation()
+        mapAnnotiation.coordinate = coordinates
+        
+        //Remove old pins then add new ones, as this view should only have a singe pin.
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(mapAnnotiation)
+        //Zoom to location.
+        mapView.setCenter(coordinates, animated: true)
+    }
+    
+    func updateCollectionFlow(_ collectionViewSize: CGSize) {
+        
+        let landscapeOrientation = collectionViewSize.width > collectionViewSize.height
+        
+        //Spacing and item layout if landscape orientation is true.
+        let spacing: CGFloat = landscapeOrientation ? 5 : 3
+        let collectionItems: CGFloat = landscapeOrientation ? 2 : 3
+        
+        let dimensions = (collectionViewSize.width - ((collectionItems + 1) * spacing)) / collectionItems
+        
+        collectionViewFlow?.minimumInteritemSpacing = spacing
+        collectionViewFlow?.minimumLineSpacing = spacing
+        collectionViewFlow?.itemSize = CGSize(width: dimensions, height: dimensions)
+        collectionViewFlow?.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+    }
+    
+    
     
 
     
