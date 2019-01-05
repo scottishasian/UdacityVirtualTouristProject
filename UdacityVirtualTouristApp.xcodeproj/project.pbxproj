@@ -22,6 +22,7 @@
 		24AB9EC821DF8EE800F42570 /* MapView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */; };
 		24AB9ECA21DFDAB200F42570 /* PhotoCellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */; };
 		24AB9ECC21DFDF5100F42570 /* Pin+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9ECB21DFDF5100F42570 /* Pin+Extension.swift */; };
+		24AB9ECE21E0D74500F42570 /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AB9ECD21E0D74500F42570 /* Photo+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		24AB9EC721DF8EE800F42570 /* MapView_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView_Extensions.swift; sourceTree = "<group>"; };
 		24AB9EC921DFDAB200F42570 /* PhotoCellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellsViewController.swift; sourceTree = "<group>"; };
 		24AB9ECB21DFDF5100F42570 /* Pin+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pin+Extension.swift"; sourceTree = "<group>"; };
+		24AB9ECD21E0D74500F42570 /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				2415ED0A21DD341B0048301F /* PhotoDataParser.swift */,
 				24AB9ECB21DFDF5100F42570 /* Pin+Extension.swift */,
+				24AB9ECD21E0D74500F42570 /* Photo+Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				2415ED0421DD0C7A0048301F /* Constants.swift in Sources */,
 				2415ED0B21DD341B0048301F /* PhotoDataParser.swift in Sources */,
 				2416FF0221DE1B5D0043E5A7 /* Extensions.swift in Sources */,
+				24AB9ECE21E0D74500F42570 /* Photo+Extension.swift in Sources */,
 				24AB9EC321DE347F00F42570 /* DataManager.swift in Sources */,
 				24AB9EC521DF815100F42570 /* LocationPhotosViewController.swift in Sources */,
 				2416FF0721DE267A0043E5A7 /* Virtual_Tourist_Model.xcdatamodeld in Sources */,

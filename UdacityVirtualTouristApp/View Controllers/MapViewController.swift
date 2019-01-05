@@ -13,7 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    var dataManager: DataManager!
+    //var dataManager: DataManager!
     
     var pinPlacement : MKPointAnnotation? = nil
     
@@ -54,7 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     longitude: String(pinPlacement!.coordinate.longitude),
                     context: DataManager.sharedInstance().pinContext)
             
-            savePin()
+            saveData()
         }
     }
     
@@ -76,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         var loadedPin: Pin?
         
         do {
-            try loadedPin = dataManager.fetchRequestForPin(predicate, entityName: Pin.pinName)
+            try loadedPin = DataManager.sharedInstance().fetchRequestForPin(predicate, entityName: Pin.pinName)
         } catch {
             fatalError("\(error)")
         }

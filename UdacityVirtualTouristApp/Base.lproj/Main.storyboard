@@ -85,6 +85,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="6NY-qk-M9o">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ytm-hH-Rwd" customClass="PhotoCellsViewController" customModule="UdacityVirtualTouristApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
@@ -113,7 +117,9 @@
                         <viewLayoutGuide key="safeArea" id="1wY-jf-RMq"/>
                     </view>
                     <connections>
-                        <outlet property="LocationCollectionView" destination="3c4-Te-Vyr" id="blI-oV-Ak8"/>
+                        <outlet property="collectionViewFlow" destination="BsZ-p2-dvX" id="bD6-cY-RJd"/>
+                        <outlet property="loadingSpinner" destination="6NY-qk-M9o" id="Mkr-MH-YQt"/>
+                        <outlet property="locationCollectionView" destination="3c4-Te-Vyr" id="Mw8-T6-XA8"/>
                         <outlet property="mapView" destination="VMV-Sd-Ap2" id="afz-wP-grd"/>
                     </connections>
                 </viewController>

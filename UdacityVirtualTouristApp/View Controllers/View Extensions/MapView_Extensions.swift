@@ -35,16 +35,33 @@ extension MapViewController {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            //If segue is placed here, then the user has to tap on the Callout Accessory.
-            performSegue(withIdentifier: "LocationPhotos", sender: self)
-        } else {
-            self.showErrorInfo(withMessage: "No links available with location.")
-        }
+//        if control == view.rightCalloutAccessoryView {
+//            //If segue is placed here, then the user has to tap on the Callout Accessory.
+//            performSegue(withIdentifier: "LocationPhotos", sender: self)
+//        } else {
+//            self.showErrorInfo(withMessage: "No links available with location.")
+//        }
+        self.showErrorInfo(withMessage: "No links available with location.")
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         //If segue is placed here, then the user can tap on the pin to proceed.
         print("Pin tapped")
+        
+        guard let pinPlacement = view.annotation else {
+            return
+        }
+        
+        mapView.deselectAnnotation(pinPlacement, animated: true)
+        let latitude = String(pinPlacement.coordinate.latitude)
+        let longitude = String(pinPlacement.coordinate.longitude)
+        
+        if let pin = loadPinLocation(latitude: latitude, longitude: longitude) {
+            if isEditing {
+                print("Is editing")
+                return
+            }
+            performSegue(withIdentifier: "LocationPhotos", sender: pin)
+        }
     }
 }

@@ -28,7 +28,7 @@ extension UIViewController {
         }
     }
     
-    func savePin() {
+    func saveData() {
         do {
             try DataManager.sharedInstance().savePinContext()
         } catch {
