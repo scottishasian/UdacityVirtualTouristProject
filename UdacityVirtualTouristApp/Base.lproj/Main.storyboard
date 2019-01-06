@@ -26,18 +26,30 @@
                                     <outletCollection property="gestureRecognizers" destination="vYY-u7-3m9" appends="YES" id="Ug4-J3-HRh"/>
                                 </connections>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap a pin to delete it." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdy-gb-3DB">
+                                <rect key="frame" x="71" y="579" width="232" height="56"/>
+                                <color key="backgroundColor" red="0.0086828044040000007" green="0.0086828044040000007" blue="0.0086828044040000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SYE-Vx-Vnj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="87a-O9-m3w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bdy-gb-3DB" secondAttribute="bottom" constant="32" id="Cax-xn-wWG"/>
                             <constraint firstItem="SYE-Vx-Vnj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="G5J-R9-wdx"/>
                             <constraint firstItem="SYE-Vx-Vnj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jb4-gy-gJa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdy-gb-3DB" secondAttribute="trailing" constant="72" id="Nq4-We-OE0"/>
                             <constraint firstItem="SYE-Vx-Vnj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TgH-H0-4Bu"/>
+                            <constraint firstItem="bdy-gb-3DB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="515" id="iUV-Rn-hDe"/>
+                            <constraint firstItem="bdy-gb-3DB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="71" id="q5O-SS-ZUe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Udacity Virtual Tourist" id="prI-vV-J9N"/>
                     <connections>
+                        <outlet property="deleteInstructions" destination="bdy-gb-3DB" id="kDl-La-okP"/>
                         <outlet property="mapView" destination="SYE-Vx-Vnj" id="v85-wa-Crp"/>
                         <segue destination="Nbz-hP-Hc6" kind="presentation" identifier="LocationPhotos" id="SM4-6T-wTw"/>
                     </connections>
@@ -76,6 +88,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="zSj-qL-7qq"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Nbz-hP-Hc6" id="Tue-dZ-Dah"/>
+                                </connections>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3c4-Te-Vyr">
                                 <rect key="frame" x="0.0" y="232" width="375" height="435"/>
@@ -122,6 +137,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nbz-hP-Hc6" id="Xeb-eB-KFi"/>
+                                    <outlet property="delegate" destination="Nbz-hP-Hc6" id="S3b-1u-Yre"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -9,7 +9,8 @@
 import Foundation
 
 struct PhotosDataParser: Codable {
-    let photosData: PhotoData
+    //Needs to be photos, no data was found under the name photoData.
+    let photos: PhotoData
 }
 
 struct PhotoData: Codable {

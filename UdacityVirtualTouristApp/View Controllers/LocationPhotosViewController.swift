@@ -57,7 +57,7 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
         fetchRequest.predicate = NSPredicate(format: "pin == %@", argumentArray: [selectedPin])
         
         fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: DataManager.sharedInstance().pinContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchResultsController.delegate = self as? NSFetchedResultsControllerDelegate
+        fetchResultsController.delegate = self
         
         var error: NSError?
         do {
@@ -85,10 +85,10 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
                 self.loadingSpinner.stopAnimating()
             }
             if let parsedPhotos = parsedPhotos {
-                self.loadedPages = parsedPhotos.photosData.pages
-                let photoCount = parsedPhotos.photosData.photo.count
+                self.loadedPages = parsedPhotos.photos.pages
+                let photoCount = parsedPhotos.photos.photo.count
                 print("Photos downloaded = \(photoCount)")
-                self.storeDownloadedPhotos(parsedPhotos.photosData.photo, selectedPin: selectedPin)
+                self.storeDownloadedPhotos(parsedPhotos.photos.photo, selectedPin: selectedPin)
                 if photoCount == 0 {
                     print("No photos for this location")
                 }

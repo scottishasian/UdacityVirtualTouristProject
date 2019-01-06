@@ -12,6 +12,7 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var deleteInstructions: UILabel!
     
     //var dataManager: DataManager!
     
@@ -20,6 +21,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        //Adding a means to delete pins - existing edit button.
+        navigationItem.rightBarButtonItem = editButtonItem
+        //Edit button state will determine if the instructions are shown or not.
+        deleteInstructions.isHidden = true
         
         if let savedPins = loadSavedPins() {
             displaySavedPins(savedPins)
@@ -56,6 +61,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             saveData()
         }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        deleteInstructions.isHidden = !editing
     }
     
     //Segue performed when pin is tapped.

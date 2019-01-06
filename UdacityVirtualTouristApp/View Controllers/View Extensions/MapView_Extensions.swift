@@ -59,6 +59,8 @@ extension MapViewController {
         if let pin = loadPinLocation(latitude: latitude, longitude: longitude) {
             if isEditing {
                 print("Is editing")
+                mapView.removeAnnotation(pinPlacement)
+                DataManager.sharedInstance().pinContext.delete(pin)
                 return
             }
             performSegue(withIdentifier: "LocationPhotos", sender: pin)
