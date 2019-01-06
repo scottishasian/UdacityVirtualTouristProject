@@ -61,6 +61,8 @@ extension MapViewController {
                 print("Is editing")
                 mapView.removeAnnotation(pinPlacement)
                 DataManager.sharedInstance().pinContext.delete(pin)
+                //Need to save the data after deletion or pins will re-appear.
+                saveData()
                 return
             }
             performSegue(withIdentifier: "LocationPhotos", sender: pin)

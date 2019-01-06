@@ -45,10 +45,16 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        updateCollectionFlow(size)
+    }
+    
     //As the view is a modal, dismiss not back button.
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //Need to delete a photo.
     
     func callFetchedResults(_ selectedPin: Pin) {
         
@@ -83,6 +89,7 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
             (parsedPhotos, error) in
             self.performUIUpdatesOnMain {
                 self.loadingSpinner.stopAnimating()
+                self.loadingSpinner.isHidden = true
             }
             if let parsedPhotos = parsedPhotos {
                 self.loadedPages = parsedPhotos.photos.pages
@@ -118,7 +125,6 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
         do {
             try photosArray = DataManager.sharedInstance().fetchRequestForLocationPhotos(predicate,entityName: Photo.photoName)
         } catch {
-            fatalError("\(error)")
             showErrorInfo(withTitle: "Error", withMessage: "Error loading saved photos \(error)")
         }
         return photosArray
@@ -155,9 +161,4 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
         collectionViewFlow?.itemSize = CGSize(width: dimensions, height: dimensions)
         collectionViewFlow?.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
     }
-    
-    
-    
-
-    
 }

@@ -53,7 +53,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             pinPlacement?.coordinate = coordinates
             
         } else if sender.state == .ended {
-            _ = Pin(context: DataManager.sharedInstance().pinContext)
             
             _ = Pin(latitude: String(pinPlacement!.coordinate.latitude),
                     longitude: String(pinPlacement!.coordinate.longitude),

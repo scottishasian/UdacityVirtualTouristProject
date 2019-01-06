@@ -82,6 +82,7 @@ extension LocationPhotosViewController: UICollectionViewDataSource, UICollection
         if let imageData = photo.image {
             cell.cellImage.image = UIImage(data: Data(referencing: imageData as NSData))
             cell.loadingSpinner.stopAnimating()
+            cell.loadingSpinner.isHidden = true
         } else {
             if let imageUrl = photo.imageURL {
                 DataClient.sharedInstance().downloadSelectedImage(imageUrl: imageUrl) { (data, error) in
@@ -119,24 +120,28 @@ extension LocationPhotosViewController: UICollectionViewDataSource, UICollection
 
 extension LocationPhotosViewController: NSFetchedResultsControllerDelegate {
     
-    //Called when the fetchedResultContoller has been notified there are changes. Should updated affected rows.
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-            case .insert: insertedIndexPaths.append(newIndexPath!)
-            case .delete: deletedIndexPaths.append(indexPath!)
-            case .update: updatedIndexPaths.append(indexPath!)
-            case .move:
-                fatalError("Invalid change type in controller(_:didChange:atSectionIndex:for:). .move not possible")
-        }
-    }
-    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         insertedIndexPaths = [IndexPath]()
         deletedIndexPaths = [IndexPath]()
         updatedIndexPaths = [IndexPath]()
     }
     
+    //Called when the fetchedResultContoller has been notified there are changes. Should updated affected rows.
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+            case .insert: insertedIndexPaths.append(newIndexPath!)
+                break
+            case .delete: deletedIndexPaths.append(indexPath!)
+                break
+            case .update: updatedIndexPaths.append(indexPath!)
+                break
+            case .move:
+                fatalError("Invalid change type in controller(_:didChange:atSectionIndex:for:). .move not possible")
+                break
+        }
+    }
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         locationCollectionView.performBatchUpdates({() -> Void in
