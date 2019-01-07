@@ -82,7 +82,6 @@ extension LocationPhotosViewController: UICollectionViewDataSource, UICollection
         if let imageData = photo.image {
             cell.cellImage.image = UIImage(data: Data(referencing: imageData as NSData))
             cell.loadingSpinner.stopAnimating()
-            cell.loadingSpinner.isHidden = true
         } else {
             if let imageUrl = photo.imageURL {
                 DataClient.sharedInstance().downloadImage(imagePath: imageUrl, completionHandler: { (data, error) in
