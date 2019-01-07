@@ -62,24 +62,27 @@ class DataClient {
                 let photosDataParser = try JSONDecoder().decode(PhotosDataParser.self, from: data)
                 completion(photosDataParser, nil)
             } catch {
-                print("error: \(error)")
+                debugPrint("Error: \(error)")
                 completion(nil, error)
             }
         }
-    }
-    
-    func downloadSelectedImage(imageUrl: String, result: @escaping (_ result: Data?, _ error: NSError?) -> Void) {
-        guard let url = URL(string: imageUrl) else {
-            return
-        }
-        let dataTask = taskForGetMethod(nil, url, parameters: [:]) { (data, error) in
-            result(data, error)
-            self.dataTasks.removeValue(forKey: imageUrl)
+    }    
+    func downloadImage( imagePath:String, completionHandler: @escaping (_ imageData: Data?, _ errorString: String?) -> Void){
+        let session = URLSession.shared
+        let imgURL = NSURL(string: imagePath)
+        let request: NSURLRequest = NSURLRequest(url: imgURL! as URL)
+        
+        let task = session.dataTask(with: request as URLRequest) {data, response, downloadError in
+            
+            if downloadError != nil {
+                completionHandler(nil, "Could not download image \(imagePath)")
+            } else {
+                
+                completionHandler(data, nil)
+            }
         }
         
-        if dataTasks[imageUrl] == nil {
-            dataTasks[imageUrl] = dataTask
-        }
+        task.resume()
     }
     
     func cancelDownloadInProgress(_ imageURL: String) {

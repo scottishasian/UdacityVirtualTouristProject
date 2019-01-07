@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="91n-hz-PnP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="91n-hz-PnP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,7 +92,7 @@
                                 </connections>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3c4-Te-Vyr">
-                                <rect key="frame" x="0.0" y="232" width="375" height="435"/>
+                                <rect key="frame" x="0.0" y="232" width="375" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BsZ-p2-dvX">
                                     <size key="itemSize" width="116" height="116"/>
@@ -102,7 +101,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="6NY-qk-M9o">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="404"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <cells>
@@ -117,7 +116,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
                                                 </imageView>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JfQ-UO-Kmh">
-                                                    <rect key="frame" x="48" y="48" width="20" height="20"/>
+                                                    <rect key="frame" x="48" y="68" width="20" height="0.0"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>
@@ -142,18 +141,29 @@
                                     <outlet property="delegate" destination="Nbz-hP-Hc6" id="S3b-1u-Yre"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2po-F5-QyP">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Refresh Collection"/>
+                                <connections>
+                                    <action selector="refreshCollectionTapped:" destination="Nbz-hP-Hc6" eventType="touchUpInside" id="FsM-fQ-gWD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3c4-Te-Vyr" firstAttribute="bottom" secondItem="1wY-jf-RMq" secondAttribute="bottom" id="6xi-V1-J3E"/>
+                            <constraint firstItem="2po-F5-QyP" firstAttribute="top" secondItem="3c4-Te-Vyr" secondAttribute="bottom" constant="1" id="5Mz-mb-Ibh"/>
                             <constraint firstItem="3c4-Te-Vyr" firstAttribute="top" secondItem="VMV-Sd-Ap2" secondAttribute="bottom" id="98q-qa-zJq"/>
                             <constraint firstItem="VMV-Sd-Ap2" firstAttribute="trailing" secondItem="1wY-jf-RMq" secondAttribute="trailing" id="KF4-Gj-doM"/>
                             <constraint firstItem="VMV-Sd-Ap2" firstAttribute="top" secondItem="DyQ-QJ-PQj" secondAttribute="bottom" id="MO7-MR-SG2"/>
                             <constraint firstItem="DyQ-QJ-PQj" firstAttribute="trailing" secondItem="VMV-Sd-Ap2" secondAttribute="trailing" id="aCc-6n-B8w"/>
                             <constraint firstItem="3c4-Te-Vyr" firstAttribute="leading" secondItem="1wY-jf-RMq" secondAttribute="leading" id="cic-FI-gb5"/>
+                            <constraint firstItem="2po-F5-QyP" firstAttribute="bottom" secondItem="1wY-jf-RMq" secondAttribute="bottom" id="dm4-Fw-HsD"/>
+                            <constraint firstItem="2po-F5-QyP" firstAttribute="trailing" secondItem="1wY-jf-RMq" secondAttribute="trailing" id="goX-te-zni"/>
                             <constraint firstItem="DyQ-QJ-PQj" firstAttribute="leading" secondItem="VMV-Sd-Ap2" secondAttribute="leading" id="j1O-cr-esl"/>
                             <constraint firstItem="VMV-Sd-Ap2" firstAttribute="leading" secondItem="1wY-jf-RMq" secondAttribute="leading" id="nt1-mx-90q"/>
                             <constraint firstItem="DyQ-QJ-PQj" firstAttribute="top" secondItem="1wY-jf-RMq" secondAttribute="top" id="rV7-wB-pWc"/>
+                            <constraint firstItem="2po-F5-QyP" firstAttribute="leading" secondItem="1wY-jf-RMq" secondAttribute="leading" id="uD1-kS-3NO"/>
                             <constraint firstItem="3c4-Te-Vyr" firstAttribute="trailing" secondItem="1wY-jf-RMq" secondAttribute="trailing" id="yzK-x3-0tF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1wY-jf-RMq"/>
@@ -163,6 +173,7 @@
                         <outlet property="loadingSpinner" destination="6NY-qk-M9o" id="Mkr-MH-YQt"/>
                         <outlet property="locationCollectionView" destination="3c4-Te-Vyr" id="Mw8-T6-XA8"/>
                         <outlet property="mapView" destination="VMV-Sd-Ap2" id="afz-wP-grd"/>
+                        <outlet property="refreshCollection" destination="2po-F5-QyP" id="e6S-9j-3W3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLW-KH-lph" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -85,7 +85,7 @@ extension LocationPhotosViewController: UICollectionViewDataSource, UICollection
             cell.loadingSpinner.isHidden = true
         } else {
             if let imageUrl = photo.imageURL {
-                DataClient.sharedInstance().downloadSelectedImage(imageUrl: imageUrl) { (data, error) in
+                DataClient.sharedInstance().downloadImage(imagePath: imageUrl, completionHandler: { (data, error) in
                     if let _ = error {
                         self.performUIUpdatesOnMain {
                             cell.loadingSpinner.stopAnimating()
@@ -107,7 +107,7 @@ extension LocationPhotosViewController: UICollectionViewDataSource, UICollection
                             }
                         }
                     }
-                }
+                })
             }
         }
     }

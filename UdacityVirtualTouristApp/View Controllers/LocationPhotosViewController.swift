@@ -16,6 +16,7 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var locationCollectionView: UICollectionView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var collectionViewFlow: UICollectionViewFlowLayout!
+    @IBOutlet weak var refreshCollection: UIButton!
     
     var selectedIndexes = [IndexPath]()
     var insertedIndexPaths: [IndexPath]!
@@ -45,9 +46,18 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        updateCollectionFlow()
+//    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         updateCollectionFlow(size)
     }
+    
+    @IBAction func refreshCollectionTapped(_ sender: Any) {
+        print("Refresh Collection")
+    }
+    
     
     //As the view is a modal, dismiss not back button.
     @IBAction func backButton(_ sender: Any) {
