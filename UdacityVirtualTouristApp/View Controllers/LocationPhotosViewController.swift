@@ -56,6 +56,9 @@ class LocationPhotosViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func refreshCollectionTapped(_ sender: Any) {
         print("Refresh Collection")
+        performUIUpdatesOnMain {
+            self.fetchPhotosFromFlickr(self.tappedPin!)
+        }
     }
     
     
